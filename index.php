@@ -27,11 +27,12 @@
     <?php
         $selectedPic="";
         $picSize="";
+        //добавить проверки
         $targetDir="upload/";
         $targetFile = $targetDir . basename($_FILES["uploadfile"]["name"]);
         echo $targetFile;
         move_uploaded_file($_FILES["uploadfile"]["tmp_name"], $targetFile);
-        //загрузка не работает, не видит загружаемый файл
+
         if (isset($_POST["pictures"]) & isset($_POST["picSize"])) {
             $smile1="01";
             $smile2="02";
