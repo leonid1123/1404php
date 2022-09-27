@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
         <p>Выберите картинку</p>
         <select name="pictures">
             <option value="smile1">Смайлик 1</option>
@@ -21,15 +21,16 @@
             <option value="bigPic">большой</option>
         </select>
         <p>Загрузить своё изображение</p>
-        <input type="file" name="file">
+        <input type="file" name="uploadfile">
         <input type="submit" value="ТЫК!">
     </form>
     <?php
         $selectedPic="";
         $picSize="";
         $targetDir="upload/";
-        $targetFile = $targetDir . basename($_FILES["file"]["name"]);
-        move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile);
+        $targetFile = $targetDir . basename($_FILES["uploadfile"]["name"]);
+        echo $targetFile;
+        move_uploaded_file($_FILES["uploadfile"]["tmp_name"], $targetFile);
         //загрузка не работает, не видит загружаемый файл
         if (isset($_POST["pictures"]) & isset($_POST["picSize"])) {
             $smile1="01";
