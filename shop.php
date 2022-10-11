@@ -11,6 +11,7 @@
     $imageName = "05.png";
     $stmt->bind_param("sssss", $itemTitle,$itemText,$buttonText,$buttonLink,$imageName);
     $stmt->execute();
+    echo $stmt->affected_rows;
 ?>
 <!DOCTYPE html>
 <html lang="en">
