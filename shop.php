@@ -1,3 +1,17 @@
+<?php
+    $mysqli = new mysqli("localhost", "pk1404", "123456", "shop1404");
+    echo $mysqli->host_info . "\n";
+    $stmt = $mysqli->prepare("INSERT INTO 
+    vitrina(itemId, itemTitle, itemText, buttonText, buttonLink, imageName) 
+    VALUES (null,?,?,?,?,?)");
+    $itemTitle = "Кофрик для мышЫ";
+    $itemText = "Это коврик для мышЫ, что ты хотел тут увидеть?";
+    $buttonText = "Чпок.!.";
+    $buttonLink = "https://kuda.to";
+    $imageName = "05.png";
+    $stmt->bind_param("sssss", $itemTitle,$itemText,$buttonText,$buttonLink,$imageName);
+    $stmt->execute();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +27,7 @@
 <body>
     <div class="container-md">
         <h1>Витрина стандартного магазина</h1>
-        <div class="card" >
+        <div class="card">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="..." class="img-fluid rounded-start" alt="...">
