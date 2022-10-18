@@ -1,6 +1,17 @@
 <?php
-$mysqli = new mysqli("localhost", "pk1404", "123456", "shop1404");
-$result = $mysqli->query("SELECT itemTitle, itemText, buttonText, buttonLink, imageName FROM vitrina");
+/*
+    $stmt = $mysqli->prepare("INSERT INTO 
+    vitrina(itemId, itemTitle, itemText, buttonText, buttonLink, imageName) 
+    VALUES (null,?,?,?,?,?)");
+    $itemTitle = "Кофрик для мышЫ";
+    $itemText = "Это коврик для мышЫ, что ты хотел тут увидеть?";
+    $buttonText = "Чпок.!.";
+    $buttonLink = "https://kuda.to";
+    $imageName = "05.png";
+    $stmt->bind_param("sssss", $itemTitle,$itemText,$buttonText,$buttonLink,$imageName);
+    $stmt->execute();
+    echo $stmt->affected_rows;
+    */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,23 +51,13 @@ $result = $mysqli->query("SELECT itemTitle, itemText, buttonText, buttonLink, im
                 </div>
             </div>
         </nav>
-        <h1>Витрина стандартного магазина</h1>
-        <?php
-        while ($row = $result->fetch_row()) {
-            echo '<div class="card">';
-            echo '    <div class="row g-0">';
-            echo '        <div class="col-md-4">';
-            echo '            <img src="images/' . $row[4] . '" class="img-fluid rounded-start" alt="...">';
-            echo '        </div>';
-            echo '        <div class="col-md-8">';
-            echo '            <div class="card-body">';
-            echo '                <h5 class="card-title">' . $row[0] . '</h5>';
-            echo '               <p class="card-text">' . $row[1] . '</p>';
-            echo '                <a href="' . $row[3] . '" class="btn btn-primary">' . $row[2] . '</a>';
-            echo '</div> </div> </div> </div>';
-        }
-        ?>
-    </div>
+        <form>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+
+        </form>
 </body>
 
 </html>
